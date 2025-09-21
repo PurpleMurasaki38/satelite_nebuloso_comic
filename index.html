@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STLNBO Comic</title>
+  <style>
+    body { font-family: Arial; background: #111; color: #fff; text-align:center; margin:0; }
+    header { background:#222; padding:20px; }
+    nav button { background:#ff6f61; color:#fff; border:none; padding:10px 20px; margin:0 10px; border-radius:5px; cursor:pointer; }
+    nav button:hover { background:#ff4a3c; }
+    .comic-container img { width:90%; margin:20px auto; border-radius:10px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>STLNBO Comic</h1>
+    <nav>
+      <button onclick="prevChapter()">← Capítulo Anterior</button>
+      <span id="chapter-title">Capítulo 1</span>
+      <button onclick="nextChapter()">Próximo Capítulo →</button>
+    </nav>
+  </header>
+  <main>
+    <div class="comic-container">
+      <img id="comic-image" src="00.png" alt="Capítulo 1">
+    </div>
+  </main>
+  <footer>© 2025 STLNBO Comic</footer>
+
+  <script>
+    const chapters = [
+      { title: "Capítulo 1", image: "00.png" },
+      { title: "Capítulo 2", image: "01.png" },
+      { title: "Capítulo 3", image: "02.png" },
+      { title: "Capítulo 4", image: "03.png" },
+      { title: "Capítulo 5", image: "04.png" },
+      { title: "Capítulo 6", image: "05.png" },
+      { title: "Capítulo 7", image: "06.png" },
+      { title: "Capítulo 7.2", image: "07.png" },
+    ];
+    let currentChapter = 0;
+    function updateChapter() {
+      document.getElementById("comic-image").src = chapters[currentChapter].image;
+      document.getElementById("chapter-title").innerText = chapters[currentChapter].title;
+    }
+    function nextChapter() { if(currentChapter<chapters.length-1){currentChapter++; updateChapter();} }
+    function prevChapter() { if(currentChapter>0){currentChapter--; updateChapter();} }
+  </script>
+</body>
+</html>
